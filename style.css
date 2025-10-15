@@ -1,4 +1,4 @@
-/* style.css */
+/* style-parandatud.css - MathJax äralõikamise viga parandatud */
 :root {
     --primary-color: #004d99; /* Sügavsinine */
     --secondary-color: #00bfff; /* Helesinine aktsent */
@@ -176,24 +176,28 @@ footer a {
 #valemid .decoration-element-2 { bottom: 10px; left: 10px; } /* Ruutjuur */
 #otsing .decoration-element-3 { top: 50%; right: 20px; transform: translateY(-50%); } /* Pi */
 
-
+/*----------------------------------------------------*/
+/* PARANDATUD LOENDI JA MATHJAX STIILID */
+/*----------------------------------------------------*/
 
 /* style.css (Loendi elementide täiendus) */
 
 #valemid ol li {
     list-style-type: none; 
     
-    /* Eemalda vertikaalne margin. Kasuta paddingut ja borderit vahemaa loomiseks */
+    /* Eemalda vertikaalne margin, et padding kontrolliks vahet */
     margin: 0; 
     
-    /* Anna sisesuunis (padding) üles ja alla. See hoidis MathJax kasti sees. */
+    /* Anna sisesuunis (padding) üles ja alla. */
     padding: 15px 0; 
     
     line-height: 1.8;
     overflow: visible; 
     
-    /* LISATUD PARANDUS: Peen piirjoon või display: flow-root, et vältida margin collapse */
-    /* Piirjoon on kindlam: */
+    /* Display: flow-root aitab tagada, et li-element sisaldab korralikult oma sisu (MathJax) */
+    display: flow-root; 
+    
+    /* Läbipaistev piirjoon marginaalide kokku kukkumise vältimiseks (margin collapsing) */
     border-top: 1px solid transparent; 
     border-bottom: 1px solid transparent;
 }
@@ -201,14 +205,12 @@ footer a {
 /* style.css (Matemaatilise sisu stiil) */
 
 .MathJax_Display, .MathJax {
-    /* UUS PARANDUS: margin: 0; ET LI KONTROLLIKS VERTIKAALSET VAHET */
-    margin: 0 !important; /* Terve marginaal 0-ks. Oluline, et MathJax ei tekitaks tühja vahet */
-    padding: 8px; /* Jäta sisesuunis (padding) MathJaxi kasti sisse */
+    /* OLULINE PARANDUS: Vertikaalne marginaal 0-ks, et vältida äralõikamist li-elemendis */
+    margin: 0 !important; 
+    padding: 8px; /* MathJaxi kasti sisemine vahe */
     background-color: #f0f8ff; 
     border: 1px dashed var(--secondary-color);
     border-radius: 6px;
     overflow-x: auto;
     text-align: center;
 }
-
-
