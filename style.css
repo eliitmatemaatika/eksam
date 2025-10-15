@@ -186,3 +186,23 @@ footer a {
 #ulesanded .decoration-element-1 { top: 10px; right: 10px; } /* Summa */
 #valemid .decoration-element-2 { bottom: 10px; left: 10px; } /* Ruutjuur */
 #otsing .decoration-element-3 { top: 50%; right: 20px; transform: translateY(-50%); } /* Pi */
+
+/* style.css (lisada faili lõppu) */
+
+/* Tagab, et iga loendi element, mis sisaldab MathJax plokki, saaks piisavalt ruumi */
+#valemid ol li {
+    margin-bottom: 20px; /* Lisa piisavalt ruumi kahe valemi vahele */
+    line-height: 1.8; /* Suurenda ridade vahet loendi tekstis */
+}
+
+/* Tagab, et MathJax plokkide vahel oleks samuti piisavalt vaba ala */
+.MathJax_Display {
+    margin: 1.5em 0 2em 0 !important; /* Suurenda alumist marginaali (2em) */
+    padding: 15px;
+    background-color: #f0f8ff;
+    border: 1px dashed var(--secondary-color);
+    border-radius: 6px;
+    overflow-x: auto;
+    text-align: center;
+}
+
