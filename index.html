@@ -136,7 +136,7 @@
     const username = 'eliitmatemaatika'; 
     const reponame = 'eksam'; 
 
-    fetch(`https://api.github.com/repos/${username}/${reponame}/commits/gh-pages`)
+     fetch(`https://api.github.com/repos/${username}/${reponame}/commits/main`)
         .then(response => response.json())
         .then(data => {
             const lastCommitDate = new Date(data.commit.author.date);
@@ -162,4 +162,5 @@
     </body>
 
 </html>
+
 
