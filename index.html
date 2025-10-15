@@ -27,14 +27,19 @@
             <p>Siin on kogumik eksamiks vajalikke valemeid.</p>
             </section>
 	
-	<section id="valemid">
-    		<h2>Kordamisvalemid</h2>
-    			<p>Ruutvõrrandi lahendid leitakse valemiga:</p>
-
-    				\[ x = \frac{-b \pm \sqrt{b^2-4ac}}{2abc} \]
-
-    			<p>Näiteks, ülesandes tuleb leida funktsiooni tuletis  \(f'(x) = 3x^2 + 2\).</p>
-	</section>
+		<section id="valemid">
+	    		<h2>Kordamisvalemid</h2>
+	    			<p>Ruutvõrrandi lahendid leitakse valemiga:</p>
+	
+	    				\[ x = \frac{-b \pm \sqrt{b^2-4ac}}{2abc} \]
+	
+	    			<p>Näiteks, ülesandes tuleb leida funktsiooni tuletis  \(f'(x) = 3x^2 + 2\).</p>
+		</section>
+		<section id="otsing">
+			<h2>Sisesta Ülesande Number</h2>
+			<input type="text" id="taskInput" placeholder="Näiteks 5, 12A vms" onkeydown="handleKey(event)">
+			<button onclick="openTask()">Ava Ülesanne</button>
+		</section>
     </main>
 
     <footer>
@@ -50,10 +55,39 @@
     </script>
 	
 	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
-
+	
+	<script>
+	    const taskDirectory = "tasks"; // Peab vastama kausta nimele GitHubis
+	
+	    function openTask() {
+	        // Võtame sisestusväljalt numbri ja eemaldame tühikud
+	        let taskNumber = document.getElementById('taskInput').value.trim();
+	        
+	        if (taskNumber) {
+	            // Loome uue URL-i
+	            // Näiteks: tasks/5.html
+	            let newUrl = taskDirectory + '/' + taskNumber + '.html';
+	
+	            // Muudame akna asukohta, avades uue ülesande
+	            window.location.href = newUrl;
+	        } else {
+	            alert("Palun sisestage ülesande number.");
+	        }
+	    }
+	
+	    // Lubab vajutada Enter klahvi sisestuskastis
+	    function handleKey(event) {
+	        // Kontrollime, kas vajutati Enter (keyCode 13)
+	        if (event.keyCode === 13) {
+	            openTask();
+	        }
+	    }
+	</script>
+	
     </body>
 
 </html>
+
 
 
 
