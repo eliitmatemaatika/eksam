@@ -91,6 +91,7 @@
 
     <footer>
         <p>&copy; 2025 Eliitmatemaatika v1.0 | <a href="#kontakt">Kontakt</a></p>
+		<p>Viimati uuendatud: <span id="last-updated">laen...</span></p>
     </footer>
 	<script>
         MathJax = {
@@ -130,7 +131,35 @@
 	        }
 	    }
 	</script>
+	<script>
+    // ASENDA OMA GITHUB KASUTAJANIME JA REPO NIMEGA!
+    const username = 'eliitmatemaatika'; 
+    const reponame = 'eksam'; 
+
+    fetch(`https://api.github.com/repos/${username}/${reponame}/commits/gh-pages`)
+        .then(response => response.json())
+        .then(data => {
+            const lastCommitDate = new Date(data.commit.author.date);
+            
+            // Kuupäeva formaat: "15.10.2025 22:12:05"
+            const formattedDate = lastCommitDate.toLocaleString('et-EE', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            document.getElementById('last-updated').textContent = formattedDate;
+        })
+        .catch(error => {
+            console.error('Viga andmete laadimisel:', error);
+            document.getElementById('last-updated').textContent = 'aega ei õnnestunud laadida.';
+        });
+</script>
 	
     </body>
 
 </html>
+
