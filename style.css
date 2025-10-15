@@ -197,7 +197,7 @@ footer a {
 
 /* Tagab, et MathJax plokkide vahel oleks samuti piisavalt vaba ala */
 .MathJax_Display {
-    margin: 1.5em 0 2em 0 !important; /* Suurenda alumist marginaali (2em) */
+    margin: 2em 1em 2em 1em !important; /* Suurenda alumist marginaali (2em) */
     padding: 15px;
     background-color: #f0f8ff;
     border: 1px dashed var(--secondary-color);
@@ -205,4 +205,5 @@ footer a {
     overflow-x: auto;
     text-align: center;
 }
+
 
