@@ -202,14 +202,15 @@ footer a {
 
 .MathJax_Display, .MathJax {
     /* Väiksem vahe valemi ümber, et li-elemendi marginaal saaks kontrollida vahesid */
-    margin: 0 0 0 0 !important; 
-    padding: 15px;
+    margin: 10px 10px 10px 10px  !important; 
+    padding: 8px;
     background-color: #f0f8ff; 
     border: 1px dashed var(--secondary-color);
     border-radius: 6px;
     overflow-x: auto;
     text-align: center;
 }
+
 
 
 
