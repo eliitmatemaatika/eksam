@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matemaatika Riigieksami Ülesanded</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" id="main-css" href="style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -128,35 +130,41 @@
 	    }
 	</script>
 	<script>
-    // ASENDA OMA GITHUB KASUTAJANIME JA REPO NIMEGA!
-    const username = 'eliitmatemaatika'; 
-    const reponame = 'eksam'; 
+	// Lae üles kaustade/failide nimed, kui need on teada
+const cssFileName = 'style.css'; // Asenda oma tegeliku CSS-faili nimega
+const cssLink = document.getElementById('main-css');
 
-     fetch(`https://api.github.com/repos/${username}/${reponame}/commits/main`)
-        .then(response => response.json())
-        .then(data => {
-            const lastCommitDate = new Date(data.commit.author.date);
-            
-            // Kuupäeva formaat: "15.10.2025 22:12:05"
-            const formattedDate = lastCommitDate.toLocaleString('et-EE', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            });
+fetch(`https://api.github.com/repos/${eliitmatemaatika}/${eksam}/commits/main`)
+    .then(response => response.json())
+    .then(data => {
+        // 1. Tõmba viimane muudatuse aeg ja kasuta seda cache-busterina
+        const lastCommitDate = new Date(data.commit.author.date);
+        const timestamp = lastCommitDate.getTime(); // Saame millisekundid
 
-            document.getElementById('last-updated').textContent = formattedDate;
-        })
-        .catch(error => {
-            console.error('Viga andmete laadimisel:', error);
-            document.getElementById('last-updated').textContent = 'aega ei õnnestunud laadida.';
+        // MUUDATUS: Uuendame CSS-i linki uue, unikaalse URL-iga
+        // See sunnib brauserit faili uuesti laadima
+        cssLink.href = `${cssFileName}?v=${timestamp}`;
+        
+        // 2. Kuva kuupäev, nagu varem (serveripoolne aeg)
+        const formattedDate = lastCommitDate.toLocaleString('et-EE', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
         });
-</script>
-	
+
+        document.getElementById('last-updated').textContent = formattedDate;
+    })
+    .catch(error => {
+        console.error('Viga andmete laadimisel:', error);
+        document.getElementById('last-updated').textContent = 'aega ei õnnestunud laadida.';
+    });
+	</script>
     </body>
 
 </html>
+
 
 
