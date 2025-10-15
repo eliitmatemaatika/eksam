@@ -172,4 +172,56 @@ footer a {
 
 /* Dekoratsioonid index.html sektsioonidele */
 #ulesanded .decoration-element-1 { top: 10px; right: 10px; } /* Summa */
-#valemid .decoration-element-2 { bottom: 10px; left: 10
+#valemid .decoration-element-2 { bottom: 10px; left: 10px; } /* Ruutjuur */
+#otsing .decoration-element-3 { top: 50%; right: 20px; transform: translateY(-50%); } /* Pi */
+
+/*----------------------------------------------------*/
+/* PARANDATUD LOENDI JA MATHJAX STIILID */
+/*----------------------------------------------------*/
+
+/* style.css (Loendi elementide täiendus) */
+
+#valemid ol li {
+    list-style-type: none; 
+    
+    /* Eemalda vertikaalne margin, et padding kontrolliks vahet */
+    margin: 0; 
+    
+    /* Anna sisesuunis (padding) üles ja alla. */
+    padding: 15px 0; 
+    
+    line-height: 1.8;
+    overflow: visible; 
+    
+    /* Tagab, et li-element sisaldab korralikult oma sisu (MathJax) */
+    display: flow-root; 
+    
+    /* Läbipaistev piirjoon marginaalide kokku kukkumise vältimiseks (margin collapsing) */
+    border-top: 1px solid transparent; 
+    border-bottom: 1px solid transparent;
+
+    /* MUUDATUS: Joonda valemi kast vasakule (eemaldades text-align: center) */
+    text-align: left; 
+}
+
+/* style.css (Matemaatilise sisu stiil) */
+
+.MathJax_Display, .MathJax {
+    /* Mõlemale klassile on vaja rakendada inline-block */
+    display: inline-block !important; 
+
+    /* Vertikaalne marginaal 0-ks, et vältida äralõikamist li-elemendis */
+    margin: 0 !important; 
+    
+    /* MUUDATUS: Padding 20px */
+    padding: 20px; 
+    
+    background-color: #f0f8ff; 
+    border: 1px dashed var(--secondary-color);
+    border-radius: 6px;
+    
+    /* MUUDATUS: Eemalda kerimisriba. overflow-x: auto asendati overflow: visible */
+    overflow-x: visible; 
+    
+    /* Eemaldasime text-align: center, et li-seade saaks määrata joondust */
+}
