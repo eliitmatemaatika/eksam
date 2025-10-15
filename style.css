@@ -100,17 +100,6 @@ section::before {
     border-radius: 6px 0 0 6px;
 }
 
-/* Matemaatilise sisu stiil */
-.MathJax_Display, .MathJax {
-    margin: 1.5em 0 !important;
-    padding: 15px;
-    background-color: #f0f8ff; /* Väga hele sinine */
-    border: 1px dashed var(--secondary-color);
-    border-radius: 6px;
-    overflow-x: auto;
-    text-align: center;
-}
-
 /* Nupud ja sisestusväljad */
 input[type="text"], button {
     padding: 10px 15px;
@@ -188,35 +177,38 @@ footer a {
 #otsing .decoration-element-3 { top: 50%; right: 20px; transform: translateY(-50%); } /* Pi */
 
 
+
 /* style.css (Loendi elementide täiendus) */
 
 #valemid ol li {
     list-style-type: none; 
-    /* Eemalda vana marginaal, et padding saaks tööd teha */
-    /* margin-bottom: 25px; */ /* Eemalda või vähenda oluliselt */
-    margin: 15px 0; /* Uus: Ülemine ja alumine marginaal vahede loomiseks */
+    
+    /* Eemalda vertikaalne margin. Kasuta paddingut ja borderit vahemaa loomiseks */
+    margin: 0; 
+    
+    /* Anna sisesuunis (padding) üles ja alla. See hoidis MathJax kasti sees. */
+    padding: 15px 0; 
+    
     line-height: 1.8;
+    overflow: visible; 
     
-    /* Oluline Muudatus: Lisa vertikaalne sisesuunis (padding) */
-    padding: 15px 0; /* Annab piisavalt sisesuunist (vahet) üles-alla */
-    
-    /* overflow: hidden; */ /* Eemalda see, kuna see lõikab MathJaxi sisu */
-    /* padding-bottom: 0; */ /* Eemalda see */
-    overflow: visible; /* Aseta sisu nähtavaks (või eemalda üldse see rida) */
+    /* LISATUD PARANDUS: Peen piirjoon või display: flow-root, et vältida margin collapse */
+    /* Piirjoon on kindlam: */
+    border-top: 1px solid transparent; 
+    border-bottom: 1px solid transparent;
 }
 
 /* style.css (Matemaatilise sisu stiil) */
 
 .MathJax_Display, .MathJax {
-    /* Oluline Muudatus: Vertikaalne marginaal 0-ks, lubame LI-l kontrollida vahesid */
-    margin: 0 10px !important; /* Vertikaalne marginaal 0-ks, horisontaalne jääb 10px */
-    padding: 8px;
+    /* UUS PARANDUS: margin: 0; ET LI KONTROLLIKS VERTIKAALSET VAHET */
+    margin: 0 !important; /* Terve marginaal 0-ks. Oluline, et MathJax ei tekitaks tühja vahet */
+    padding: 8px; /* Jäta sisesuunis (padding) MathJaxi kasti sisse */
     background-color: #f0f8ff; 
     border: 1px dashed var(--secondary-color);
     border-radius: 6px;
     overflow-x: auto;
     text-align: center;
 }
-
 
 
