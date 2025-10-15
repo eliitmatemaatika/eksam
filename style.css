@@ -187,21 +187,31 @@ footer a {
 #valemid .decoration-element-2 { bottom: 10px; left: 10px; } /* Ruutjuur */
 #otsing .decoration-element-3 { top: 50%; right: 20px; transform: translateY(-50%); } /* Pi */
 
-/* style.css (uuendus) */
+/* style.css (Loendi elementide täiendus) */
 
-/* Tagab, et iga loendi element, mis sisaldab MathJax plokki, saaks piisavalt ruumi */
 #valemid ol li {
-    margin-bottom: 30px; /* Suurenda marginaali veelgi igaks juhuks */
+    list-style-type: none; /* Eemalda vaikimisi number/täpp loendi algusest */
+    margin-bottom: 25px; /* Tõstame alumist marginaali */
+    margin-top: 10px; /* LISA ÜLEMINE MARGIN, et kastid oleks selgelt eraldatud */
     line-height: 1.8;
-    overflow: hidden; /* VÄGA TÄHTIS: sunnib vanem-elementi (li) sisaldama kõiki laps-elemente */
-    padding-bottom: 5px; /* Lisa veidi polstrit allapoole */
+    overflow: hidden; /* Hoiame selle alles, et tagada vanem-elemendi õige kõrgus */
+    padding-bottom: 0; /* Eemalda igasugune sisesuunis, mis segab marginaale */
 }
-/* style.css (uuendus) */
+
+
+/* style.css (Kordamisvalemite sektsiooni täiendus) */
+
+/* Eralda Loend pealkirjast ja eemalda vaikimisi loendielementide sisesuunised */
+#valemid ol {
+    padding-left: 0; /* Eemalda vaikimisi vasak sisesuunis, mis võib MathJax'i segada */
+    margin-top: 20px; /* LISA MARGIN loendi ja pealkirja vahele */
+}
 
 /* Matemaatilise sisu stiil */
+
 .MathJax_Display, .MathJax {
-    /* Oluline: Alumine marginaal peab olema suurem või võrdne loendi elemendi margin-bottom väärtusega */
-    margin: 1.5em 0 2em 0 !important;
+    /* Väiksem vahe valemi ümber, et li-elemendi marginaal saaks kontrollida vahesid */
+    margin: 0 0 0 0 !important; 
     padding: 15px;
     background-color: #f0f8ff; 
     border: 1px dashed var(--secondary-color);
