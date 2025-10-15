@@ -187,22 +187,29 @@ footer a {
 #valemid .decoration-element-2 { bottom: 10px; left: 10px; } /* Ruutjuur */
 #otsing .decoration-element-3 { top: 50%; right: 20px; transform: translateY(-50%); } /* Pi */
 
+
 /* style.css (Loendi elementide täiendus) */
 
 #valemid ol li {
-    list-style-type: none; /* Eemalda vaikimisi number/täpp loendi algusest */
-    margin-bottom: 25px; /* Tõstame alumist marginaali */
-    margin-top: 10px; /* LISA ÜLEMINE MARGIN, et kastid oleks selgelt eraldatud */
+    list-style-type: none; 
+    /* Eemalda vana marginaal, et padding saaks tööd teha */
+    /* margin-bottom: 25px; */ /* Eemalda või vähenda oluliselt */
+    margin: 15px 0; /* Uus: Ülemine ja alumine marginaal vahede loomiseks */
     line-height: 1.8;
-    overflow: hidden; /* Hoiame selle alles, et tagada vanem-elemendi õige kõrgus */
-    padding-bottom: 0; /* Eemalda igasugune sisesuunis, mis segab marginaale */
+    
+    /* Oluline Muudatus: Lisa vertikaalne sisesuunis (padding) */
+    padding: 15px 0; /* Annab piisavalt sisesuunist (vahet) üles-alla */
+    
+    /* overflow: hidden; */ /* Eemalda see, kuna see lõikab MathJaxi sisu */
+    /* padding-bottom: 0; */ /* Eemalda see */
+    overflow: visible; /* Aseta sisu nähtavaks (või eemalda üldse see rida) */
 }
 
-/* Matemaatilise sisu stiil */
+/* style.css (Matemaatilise sisu stiil) */
 
 .MathJax_Display, .MathJax {
-    /* Väiksem vahe valemi ümber, et li-elemendi marginaal saaks kontrollida vahesid */
-    margin: 10px 10px 10px 10px  !important; 
+    /* Oluline Muudatus: Vertikaalne marginaal 0-ks, lubame LI-l kontrollida vahesid */
+    margin: 0 10px !important; /* Vertikaalne marginaal 0-ks, horisontaalne jääb 10px */
     padding: 8px;
     background-color: #f0f8ff; 
     border: 1px dashed var(--secondary-color);
@@ -210,7 +217,6 @@ footer a {
     overflow-x: auto;
     text-align: center;
 }
-
 
 
 
