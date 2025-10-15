@@ -198,15 +198,6 @@ footer a {
     padding-bottom: 0; /* Eemalda igasugune sisesuunis, mis segab marginaale */
 }
 
-
-/* style.css (Kordamisvalemite sektsiooni täiendus) */
-
-/* Eralda Loend pealkirjast ja eemalda vaikimisi loendielementide sisesuunised */
-#valemid ol {
-    padding-left: 0; /* Eemalda vaikimisi vasak sisesuunis, mis võib MathJax'i segada */
-    margin-top: 20px; /* LISA MARGIN loendi ja pealkirja vahele */
-}
-
 /* Matemaatilise sisu stiil */
 
 .MathJax_Display, .MathJax {
@@ -219,5 +210,6 @@ footer a {
     overflow-x: auto;
     text-align: center;
 }
+
 
 
