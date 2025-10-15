@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ülesanne 2</title>
+    <link rel="stylesheet" href="../style.css"> </head>
+<body>
+    <header>
+        <h1>Ülesanne 2: Ruutvõrrandid 2</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Probleem</h2>
+            <p>Lahenda järgmine ruutvõrrand:</p>
+            $$ 3x^2 - 24x + 9 = 0 $$
+            
+            <h3>Lahendus:</h3>
+            <p>Esmalt jagame võrrandi 3-ga, saame $x^2 - 4x + 3 = 0$. Kasutades Viete'i valemeid, saame lahenditeks $x_1 = 1$ ja $x_2 = 3$.</p>
+        </section>
+
+        <section id="nextTask">
+            <h3>Ava Järgmine Ülesanne</h3>
+            <input type="text" id="taskInput" placeholder="Ülesande nr:" onkeydown="handleKey(event)">
+            <button onclick="openTask()">Ava</button>
+        </section>
+    </main>
+
+    <footer>
+        <p><a href="../index.html">Tagasi avalehele</a></p>
+    </footer>
+
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          }
+        };
+    </script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    
+    <script>
+        const taskDirectory = ""; // Jätame tühjaks, sest oleme juba tasks kaustas
+        
+        function openTask() {
+            let taskNumber = document.getElementById('taskInput').value.trim();
+            
+            if (taskNumber) {
+                // Näiteks tasks/1.html lehel sisestades '2' avaneb 2.html
+                window.location.href = taskNumber + '.html';
+            } else {
+                alert("Palun sisestage ülesande number.");
+            }
+        }
+        
+        function handleKey(event) {
+            if (event.keyCode === 13) {
+                openTask();
+            }
+        }
+    </script>
+</body>
+</html>
