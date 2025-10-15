@@ -1,43 +1,188 @@
+/* style.css */
+:root {
+    --primary-color: #004d99; /* Sügavsinine */
+    --secondary-color: #00bfff; /* Helesinine aktsent */
+    --text-color: #333;
+    --background-color: #f8f9fa; /* Pehme valge */
+    --card-background: #ffffff;
+    --border-color: #e0e0e0;
+    --font-family: 'Arial', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family);
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 header {
-    background: #333;
+    background: var(--primary-color);
     color: #fff;
-    padding: 1em 0;
-    text-align: center;
+    padding: 1.5em 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Logo Ikoon */
+.logo-icon {
+    font-size: 1.2em;
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+nav {
+    margin-top: 10px;
 }
 
 nav a {
     color: #fff;
-    padding: 0 15px;
+    padding: 5px 20px;
     text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 main {
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;
-    background: #fff;
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 }
 
 section {
-    margin-bottom: 30px;
-    padding: 15px;
-    border-left: 5px solid #007bff;
+    margin-bottom: 40px;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    position: relative; /* Vajalik kaunistuselemendi positsioneerimiseks */
+}
+
+section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+    margin-top: 0;
+    font-size: 1.8em;
+}
+
+/* Kaunistuselement - Laineriba nurga taga */
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background-color: var(--secondary-color);
+    border-radius: 6px 0 0 6px;
 }
 
 /* Matemaatilise sisu stiil */
-.MathJax_Display {
-    margin: 1em 0 !important;
-    padding: 10px;
-    background-color: #eee;
-    border-radius: 5px;
-    overflow-x: auto; /* Kerimisriba pikkade valemite jaoks */
+.MathJax_Display, .MathJax {
+    margin: 1.5em 0 !important;
+    padding: 15px;
+    background-color: #f0f8ff; /* Väga hele sinine */
+    border: 1px dashed var(--secondary-color);
+    border-radius: 6px;
+    overflow-x: auto;
+    text-align: center;
 }
+
+/* Nupud ja sisestusväljad */
+input[type="text"], button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #003366; /* Tumedam sinine */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    color: #777;
+    border-top: 1px solid var(--border-color);
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Spetsiifiline stiil ülesande lehele (1.html, jne.) */
+.task-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1em 0;
+    margin-bottom: 20px;
+    border-radius: 6px 6px 0 0;
+}
+
+.task-header h1 {
+    font-size: 2em;
+}
+
+.task-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+/* Lisa ikoonide fond (nt Font Awesome) */
+/* NB! See nõuab, et oleksite lisanud Font Awesome CSS-i linki HTML-i <head>-i. */
+/* Eeldan, et kasutate kaunistuselementidena Unicode sümboleid, kui te Font Awesome'i ei lisa. */
+
+/* Matemaatiliste sümbolite kaunistamine (lisa need sektsioonidesse) */
+.decoration-element {
+    position: absolute;
+    font-size: 2em;
+    opacity: 0.05;
+    color: var(--primary-color);
+    pointer-events: none;
+    user-select: none;
+    z-index: 1; /* Et sisu peale ei jääks */
+}
+
+/* Dekoratsioonid index.html sektsioonidele */
+#ulesanded .decoration-element-1 { top: 10px; right: 10px; } /* Summa */
+#valemid .decoration-element-2 { bottom: 10px; left: 10px; } /* Ruutjuur */
+#otsing .decoration-element-3 { top: 50%; right: 20px; transform: translateY(-50%); } /* Pi */
